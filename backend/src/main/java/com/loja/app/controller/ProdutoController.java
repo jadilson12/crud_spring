@@ -58,4 +58,10 @@ public class ProdutoController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/{id}")
+    public Produto edit(@PathVariable Long id, @RequestBody Produto produto) {
+        produtos.findById(id);
+        return produtos.save(produto);
+    }
+
 }
