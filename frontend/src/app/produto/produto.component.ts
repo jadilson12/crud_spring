@@ -1,6 +1,8 @@
 import { ProdutoService } from './../produto.service';
 import { Component, OnInit } from '@angular/core';
 
+import { MessageService } from 'primeng/api';
+
 @Component({
   selector: 'app-produto',
   templateUrl: './produto.component.html',
@@ -13,7 +15,8 @@ export class ProdutoComponent implements OnInit {
   button = 'Salvar';
   display = false;
   constructor(
-  private ProdutoServices: ProdutoService,
+    private ProdutoServices: ProdutoService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -44,6 +47,20 @@ export class ProdutoComponent implements OnInit {
           this.list();
           this.button = 'Salvar';
           this.showDialog();
+          this.messageService.add({
+              severity: 'success',
+              summary: 'Produto atualizado com sucesso!',
+              });
+          },
+          response => {
+            let msg = 'Erro inesperado. Tente novamente';
+            if (response.error.message) {
+              msg = response.error.message;
+            }
+            this.messageService.add({
+              severity: 'error',
+              summary: msg
+            });
         });
     }
   }
@@ -54,7 +71,21 @@ export class ProdutoComponent implements OnInit {
       this.produto = {};
       this.list();
       this.showDialog();
-    });
+      this.messageService.add({
+          severity: 'success',
+          summary: 'Produto adicionada com sucesso!',
+          });
+      },
+      resposta => {
+        let msg = 'Erro inesperado. Tente novamente';
+        if (resposta.error.message) {
+          msg = resposta.error.message;
+        }
+        this.messageService.add({
+          severity: 'error',
+          summary: msg
+        });
+      });
   }
 
   delete(id) {
@@ -62,6 +93,20 @@ export class ProdutoComponent implements OnInit {
     .subscribe(response => {
       this.produtos = <any> response;
       this.list();
+      this.messageService.add({
+          severity: 'success',
+          summary: 'Produto excluido com sucesso!',
+          });
+      },
+      response => {
+        let msg = 'Erro inesperado. Tente novamente';
+        if (response.error.message) {
+          msg = response.error.message;
+        }
+        this.messageService.add({
+          severity: 'error',
+          summary: msg
+        });
     });
   }
 

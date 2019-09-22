@@ -8,19 +8,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TemplateComponent } from './template/template.component';
 import { ToolbarComponent } from './template/toolbar/toolbar.component';
 
-import {ToolbarModule} from 'primeng/toolbar';
-import {ButtonModule} from 'primeng/button';
-import {SplitButtonModule} from 'primeng/splitbutton';
-import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
-import {InputTextModule} from 'primeng/inputtext';
-import {MegaMenuModule} from 'primeng/megamenu';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule } from 'primeng/button';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { MenubarModule } from 'primeng/menubar';
+import { MenuItem } from 'primeng/api';
+import { InputTextModule } from 'primeng/inputtext';
+import { MegaMenuModule } from 'primeng/megamenu';
 import { ProdutoComponent } from './produto/produto.component';
-import {TableModule} from 'primeng/table';
-import { HttpClientModule} from '@angular/common/http';
+import {TableModule } from 'primeng/table';
+import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,10 @@ import { FormsModule } from '@angular/forms';
     TableModule,
     DialogModule,
     PanelModule,
+    ToastModule
 
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
   exports: [TemplateComponent]
 })
