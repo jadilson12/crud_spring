@@ -21,7 +21,7 @@
               <td>{{produto.quantidade}}</td>
               <td>{{produto.preco}}</td>
               <td>
-                <button type="button" (click)="showDialog()" pButton icon="pi pi-pencil" label="Editar"></button>
+                <button type="button" (click)="show(produto.id)" pButton icon="pi pi-pencil" label="Editar"></button>
                 <button (click)="delete(produto.id)" ><i class="pi pi-trash"></i>Excluir</button>
               </td>
             </tr>

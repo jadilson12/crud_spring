@@ -21,25 +21,42 @@ export class ProdutoComponent implements OnInit {
   }
 
   showDialog() {
-      this.display = true;
+      this.display = !this.display;
   }
 
+  show(id) {
+    this.showDialog();
+    this.ProdutoServices.showProduto(id)
+      .subscribe(response => this.produto = <any> response);
+  }
   list() {
     this.ProdutoServices.getProduto()
       .subscribe(response => this.produtos = <any> response);
   }
+
   salvar() {
     if (!this.produto.hasOwnProperty('id')) {
       this.create();
+    } else {
+      this.ProdutoServices.updateProduto(this.produto)
+        .subscribe(() => {
+          this.produto = {};
+          this.list();
+          this.button = 'Salvar';
+          this.showDialog();
+        });
     }
   }
+
   create() {
     this.ProdutoServices.setProduto(this.produto)
     .subscribe(() => {
       this.produto = {};
       this.list();
+      this.showDialog();
     });
   }
+
   delete(id) {
   this.ProdutoServices.deleteProduto(id)
     .subscribe(response => {

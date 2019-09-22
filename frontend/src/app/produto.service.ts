@@ -23,4 +23,12 @@ export class ProdutoService {
   setProduto(produto) {
     return this.httpClient.post(this.apiURL, produto);
   }
+
+  updateProduto(produto) {
+    return this.httpClient.put(this.apiURL + '/' + produto.id, produto);
+  }
+
+  showProduto(id) {
+     return this.httpClient.get(this.apiURL + '/' + id);
+  }
 }
