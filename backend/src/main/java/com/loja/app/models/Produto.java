@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import java.math.BigDecimal;
 
 @Entity
 public class Produto {
@@ -19,10 +20,9 @@ public class Produto {
     @NotEmpty
     private String categoria;
 
-    @NotEmpty
-    private Integer quantidade;
+    private BigDecimal quantidade;
 
-    private Float preco;
+    private BigDecimal preco;
 
     public Long getId() {
         return id;
@@ -48,19 +48,19 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public Integer getQuantidade() {
+    public BigDecimal getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(BigDecimal quantidade) {
         this.quantidade = quantidade;
     }
 
-    public Float getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(Float preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 }
