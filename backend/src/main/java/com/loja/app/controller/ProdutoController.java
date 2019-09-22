@@ -4,6 +4,7 @@ import com.loja.app.models.Produto;
 import com.loja.app.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -35,5 +36,15 @@ public class ProdutoController {
                     "Categoria já existente!");
         }
         return produtos.save(produto);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Produto> show(@PathVariable Long id) {
+        Optional<Produto> produto = produtos.findById(id);
+        if (produto.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return  ResponseEntity.ok(produto.get());
     }
 }
