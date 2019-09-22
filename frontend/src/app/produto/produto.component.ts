@@ -20,13 +20,21 @@ export class ProdutoComponent implements OnInit {
     this.list();
   }
 
+  showDialog() {
+      this.display = true;
+  }
+
   list() {
     this.ProdutoServices.getProduto()
       .subscribe(response => this.produtos = <any> response);
   }
 
-  showDialog() {
-      this.display = true;
+  delete(id) {
+    this.ProdutoServices.deleteProduto(id)
+      .subscribe(response => {
+        this.produtos = <any> response;
+        this.list();
+      });
   }
 
 }

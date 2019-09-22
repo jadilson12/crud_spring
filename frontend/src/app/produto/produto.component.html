@@ -22,7 +22,7 @@
               <td>{{produto.preco}}</td>
               <td>
                 <button type="button" (click)="showDialog()" pButton icon="pi pi-pencil" label="Editar"></button>
-                <button ><i class="pi pi-trash"></i>Excluir</button>
+                <button (click)="delete(produto.id)" ><i class="pi pi-trash"></i>Excluir</button>
               </td>
             </tr>
           </ng-template>
