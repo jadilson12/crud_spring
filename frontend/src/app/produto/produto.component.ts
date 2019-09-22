@@ -10,7 +10,7 @@ export class ProdutoComponent implements OnInit {
 
   produto = {};
   produtos = [];
-  button = 'Adicionar';
+  button = 'Salvar';
   display = false;
   constructor(
   private ProdutoServices: ProdutoService,
@@ -28,13 +28,24 @@ export class ProdutoComponent implements OnInit {
     this.ProdutoServices.getProduto()
       .subscribe(response => this.produtos = <any> response);
   }
-
+  salvar() {
+    if (!this.produto.hasOwnProperty('id')) {
+      this.create();
+    }
+  }
+  create() {
+    this.ProdutoServices.setProduto(this.produto)
+    .subscribe(() => {
+      this.produto = {};
+      this.list();
+    });
+  }
   delete(id) {
-    this.ProdutoServices.deleteProduto(id)
-      .subscribe(response => {
-        this.produtos = <any> response;
-        this.list();
-      });
+  this.ProdutoServices.deleteProduto(id)
+    .subscribe(response => {
+      this.produtos = <any> response;
+      this.list();
+    });
   }
 
 }

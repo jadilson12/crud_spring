@@ -1,6 +1,6 @@
   <p-panel>
       <p-header>
-        <button pButton type="button" icon="pi pi-plus" label="Adicionar" class="ui-button-info" style="margin-right: .25em"></button>
+        <button pButton type="button" icon="pi pi-plus" label="Adicionar" (click)="showDialog()" class="ui-button-info"></button>
       </p-header>
       <p-table [value]="produtos" [paginator]="true" [rows]="10">
           <ng-template pTemplate="header">
@@ -29,25 +29,34 @@
       </p-table>
   </p-panel>
 
-<p-dialog header="Title" [(visible)]="display">
+<p-dialog header="Adicionar novo produto" [(visible)]="display">
     <div class="p-grid">
-      <div class="p-col-2">Descrição</div>
-      <div class="p-col-10">
-        <input pInputText type="text">
+      <div class="p-col-6">
+        <span class="p-col-2">Nome</span>
+        <div class="p-col-4">
+          <input pInputText type="text" [(ngModel)]="produto.nome">
+        </div>
       </div>
-
-      <div class="p-col-2">Prospecto</div>
-      <div class="p-col-10">
-        <input pInputText type="text" >
+      <div class="p-col-6">
+        <span class="p-col-2">Categoria</span>
+        <div class="p-col-4">
+          <input pInputText type="text" [(ngModel)]="produto.categoria" >
+        </div>
       </div>
-
-      <div class="p-col-2">Valor</div>
-      <div class="p-col-10">
-        <input pInputText type="text" >
+      <div class="p-col-6">
+        <span class="p-col-2">Quantidade</span>
+        <div class="p-col-4">
+          <input pInputText type="text" [(ngModel)]="produto.quantidade" >
+        </div>
       </div>
-
+      <div class="p-col-6">
+        <span class="p-col-2">Valor</span>
+        <div class="p-col-4">
+          <input pInputText type="text" [(ngModel)]="produto.preco" >
+        </div>
+      </div>
       <div class="p-col-10 p-offset-2">
-          <button pButton type="submit" [label]="button"></button>
+          <button pButton type="submit" (click)="salvar()" [label]="button"></button>
       </div>
 
     </div>

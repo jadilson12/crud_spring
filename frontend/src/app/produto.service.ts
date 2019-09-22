@@ -15,8 +15,12 @@ export class ProdutoService {
   getProduto() {
     return this.httpClient.get(this.apiURL);
   }
-  
+
   deleteProduto(id) {
     return this.httpClient.delete(this.apiURL + '/' + id);
+  }
+
+  setProduto(produto) {
+    return this.httpClient.post(this.apiURL, produto);
   }
 }

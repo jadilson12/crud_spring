@@ -20,6 +20,7 @@ import {TableModule} from 'primeng/table';
 import { HttpClientModule} from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PanelModule } from 'primeng/panel';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
 
     BrowserAnimationsModule,
     ToolbarModule,
