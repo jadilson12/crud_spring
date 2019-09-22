@@ -11,6 +11,7 @@ export class ProdutoComponent implements OnInit {
   produto = {};
   produtos = [];
   button = 'Adicionar';
+  display = false;
   constructor(
   private ProdutoServices: ProdutoService,
   ) { }
@@ -22,6 +23,10 @@ export class ProdutoComponent implements OnInit {
   list() {
     this.ProdutoServices.getProduto()
       .subscribe(response => this.produtos = <any> response);
+  }
+
+  showDialog() {
+      this.display = true;
   }
 
 }

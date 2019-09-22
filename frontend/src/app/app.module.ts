@@ -18,6 +18,8 @@ import {MegaMenuModule} from 'primeng/megamenu';
 import { ProdutoComponent } from './produto/produto.component';
 import {TableModule} from 'primeng/table';
 import { HttpClientModule} from '@angular/common/http';
+import { DialogModule } from 'primeng/dialog';
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { HttpClientModule} from '@angular/common/http';
     MenubarModule,
     InputTextModule,
     MegaMenuModule,
-    TableModule
+    TableModule,
+    DialogModule,
+    PanelModule,
 
   ],
   providers: [],
